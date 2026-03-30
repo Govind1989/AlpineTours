@@ -78,7 +78,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ className = '' }) => {
           {/* Left Column - Contact Info */}
           <div>
             <h2 className="font-heading text-4xl lg:text-5xl font-bold text-white mb-6">
-              Let's build your trek.
+              Let's start your adventure.
             </h2>
             <p className="font-body text-lg text-white/70 mb-10 max-w-md">
               We reply within 24 hours. If you're already in Nepal, visit our Kathmandu office.
@@ -216,7 +216,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ className = '' }) => {
               Licensed by Nepal Tourism Board. Leave No Trace principles.
             </p>
             <p className="font-accent text-xs text-white/30 mt-1">
-              © 2024 Alpine Trek Nepal. All rights reserved.
+              © 2026 Alpine Outdoor Adventure. All rights reserved.
             </p>
           </div>
         </div>

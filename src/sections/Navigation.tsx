@@ -6,11 +6,12 @@ import { Menu, X } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const navLinks = [
-  { label: 'Routes', href: '#routes' },
-  { label: 'Dates', href: '#dates' },
+  { label: 'Home', href: '#routes' },
+  { label: 'Treks', href: '#dates' },
   { label: 'Bike Tours', href: '#bike-tours' },
-  { label: 'Cultural', href: '#cultural' },
   { label: 'About', href: '#about' },
+  { label: 'Customize', href: '##cultural' },
+  
 ];
 
 const Navigation: React.FC = () => {
