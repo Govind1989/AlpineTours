@@ -9,9 +9,10 @@ import Navigation from './sections/Navigation';
 import HeroSection from './sections/HeroSection';
 import AnnapurnaSection from './sections/AnnapurnaSection';
 import MustangSection from './sections/MustangSection';
-import CulturalSection from './sections/CulturalSection';
+// import CulturalSection from './sections/CulturalSection';
 import WinterSection from './sections/WinterSection';
 import GroupSection from './sections/GroupSection';
+import RescueSection from './sections/RescueSection';
 import TestimonialSection from './sections/TestimonialSection';
 import PlanSection from './sections/PlanSection';
 import FooterSection from './sections/FooterSection';
@@ -116,9 +117,10 @@ function App() {
         <AnnapurnaSection className="z-20" />
         {/* <KhumbuSection className="z-25" /> */}
         <MustangSection className="z-30" />
-        <CulturalSection className="z-40" />
+        {/* <CulturalSection className="z-40" /> */}
         <WinterSection className="z-50" />
         <GroupSection className="z-[60]" />
+        <RescueSection className="z-[65]" />
         <TestimonialSection className="z-[70]" />
         <PlanSection className="z-[80]" />
         <FooterSection className="z-[90]" />
