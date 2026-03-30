@@ -1,0 +1,72 @@
+[{
+	"resource": "/e:/Nextjs/AlpineOutdoor/src/sections/DraggableTourCards.tsx",
+	"owner": "typescript",
+	"code": "1149",
+	"severity": 8,
+	"message": "File name 'e:/Nextjs/AlpineOutdoor/node_modules/gsap/types/Draggable.d.ts' differs from already included file name 'e:/Nextjs/AlpineOutdoor/node_modules/gsap/types/draggable.d.ts' only in casing.\n  The file is in the program because:\n    Referenced via 'draggable.d.ts' from file 'e:/Nextjs/AlpineOutdoor/node_modules/gsap/types/index.d.ts'\n    Imported via 'gsap/Draggable' from file 'e:/Nextjs/AlpineOutdoor/src/sections/DraggableTourCards.tsx' with packageId 'gsap/types/Draggable.d.ts@3.14.2'",
+	"source": "ts",
+	"startLineNumber": 3,
+	"startColumn": 27,
+	"endLineNumber": 3,
+	"endColumn": 43,
+	"relatedInformation": [
+		{
+			"startLineNumber": 15,
+			"startColumn": 22,
+			"endLineNumber": 15,
+			"endColumn": 36,
+			"message": "File is included via reference here.",
+			"resource": "/e:/Nextjs/AlpineOutdoor/node_modules/gsap/types/index.d.ts"
+		}
+	],
+	"modelVersionId": 1,
+	"origin": "extHost1"
+},{
+	"resource": "/e:/Nextjs/AlpineOutdoor/src/sections/DraggableTourCards.tsx",
+	"owner": "typescript",
+	"code": "6133",
+	"severity": 4,
+	"message": "'i' is declared but its value is never read.",
+	"source": "ts",
+	"startLineNumber": 175,
+	"startColumn": 21,
+	"endLineNumber": 175,
+	"endColumn": 22,
+	"modelVersionId": 1,
+	"tags": [
+		1
+	],
+	"origin": "extHost1"
+},{
+	"resource": "/e:/Nextjs/AlpineOutdoor/src/sections/DraggableTourCards.tsx",
+	"owner": "typescript",
+	"code": "6133",
+	"severity": 4,
+	"message": "'i' is declared but its value is never read.",
+	"source": "ts",
+	"startLineNumber": 176,
+	"startColumn": 21,
+	"endLineNumber": 176,
+	"endColumn": 22,
+	"modelVersionId": 1,
+	"tags": [
+		1
+	],
+	"origin": "extHost1"
+},{
+	"resource": "/e:/Nextjs/AlpineOutdoor/src/sections/DraggableTourCards.tsx",
+	"owner": "typescript",
+	"code": "6133",
+	"severity": 4,
+	"message": "'i' is declared but its value is never read.",
+	"source": "ts",
+	"startLineNumber": 177,
+	"startColumn": 28,
+	"endLineNumber": 177,
+	"endColumn": 29,
+	"modelVersionId": 1,
+	"tags": [
+		1
+	],
+	"origin": "extHost1"
+}]

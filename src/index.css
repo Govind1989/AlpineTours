@@ -394,6 +394,48 @@
   color: white;
 }
 
+
+
+/* Draggable Cards */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.vignette-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.section-pinned {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hide default cursor on desktop when over cards */
+@media (min-width: 1024px) {
+  .draggable-card {
+    cursor: none;
+  }
+}
+
+/* Smooth card transitions when not dragging */
+.draggable-card:not(.dragging) {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

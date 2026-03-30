@@ -74,7 +74,7 @@ const Navigation: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="font-heading text-xl lg:text-2xl font-bold text-white tracking-tight">
-            Alpine Trek <span className="text-accent">Nepal</span>
+            Alpine Outdoor <span className="text-accent">Adventure</span>
           </a>
 
           {/* Desktop Navigation */}

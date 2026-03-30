@@ -11,16 +11,17 @@ import AnnapurnaSection from './sections/AnnapurnaSection';
 import MustangSection from './sections/MustangSection';
 // import CulturalSection from './sections/CulturalSection';
 import WinterSection from './sections/WinterSection';
-import GroupSection from './sections/GroupSection';
+// import GroupSection from './sections/GroupSection';
 import RescueSection from './sections/RescueSection';
 import TestimonialSection from './sections/TestimonialSection';
-import PlanSection from './sections/PlanSection';
+// import PlanSection from './sections/PlanSection';
 import FooterSection from './sections/FooterSection';
 
 // Components
 import AltitudeCounter from './components/AltitudeCounter';
 import SceneBar from './components/SceneBar';
 import GrainOverlay from './components/GrainOverlay';
+import DraggableTourCards from './sections/DraggableTourCards';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -119,10 +120,11 @@ function App() {
         <MustangSection className="z-30" />
         {/* <CulturalSection className="z-40" /> */}
         <WinterSection className="z-50" />
-        <GroupSection className="z-[60]" />
-        <RescueSection className="z-[65]" />
+        {/* <GroupSection className="z-[60]" /> */}
+        <RescueSection className="z-[60]" />
         <TestimonialSection className="z-[70]" />
-        <PlanSection className="z-[80]" />
+        {/* <PlanSection className="z-[80]" /> */}
+        <DraggableTourCards className="z-[80]" />
         <FooterSection className="z-[90]" />
       </main>
       
