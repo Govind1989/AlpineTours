@@ -11,8 +11,9 @@ interface SceneInfo {
 }
 
 const scenes: SceneInfo[] = [
-  { location: 'Khumbu Region', coordinates: '27.9881° N, 86.9250° E' },
-  { location: 'Annapurna Conservation Area', coordinates: '28.3974° N, 83.6818° E' },
+  { location: 'Trek and Bike Tour', coordinates: 'Adventure awaits you' },
+  {
+    location: 'Beyound Normal Trails', coordinates: 'Guided treks across Nepal highest landscapes.' },
   { location: 'Upper Mustang', coordinates: '29.0469° N, 83.8748° E' },
   { location: 'Kathmandu Valley', coordinates: '27.7172° N, 85.3240° E' },
   { location: 'Langtang Region', coordinates: '28.2154° N, 85.5433° E' },

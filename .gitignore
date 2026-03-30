@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE and OS specific
+.DS_Store
+.vscode/
+*.swp
+*.swo
+*.tmp
+
+# Other
+coverage/
+tests/coverage/
+*.pem
+*.key
+secrets.json
+secret.yml
+
+# Vite specific
+.vite/
+
+# TypeScript
+*.tsbuildinfo
+
+# Ignore specific local configuration files that might contain secrets
+*.local
+
+# Temporary files
+tmp/

@@ -1,7 +1,17 @@
-import React, { useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useEffect, useRef, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MapPin, Calendar, Users, Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,25 +19,38 @@ interface HeroSectionProps {
   className?: string;
 }
 
+// Trek routes data
+const trekRoutes = [
+  { value: 'everest-base-camp', label: 'Everest Base Camp Trek' },
+  { value: 'annapurna-base-camp', label: 'Annapurna Base Camp Trek' },
+  { value: 'annapurna-circuit', label: 'Annapurna Circuit Trek' },
+  { value: 'manaslu-circuit', label: 'Manaslu Circuit Trek' },
+  { value: 'langtang-valley', label: 'Langtang Valley Trek' },
+  { value: 'mustang-upper', label: 'Upper Mustang Trek' },
+  { value: 'dolpo-shey', label: 'Shey Phoksundo Trek' },
+  { value: 'gokyo-lakes', label: 'Gokyo Lakes Trek' },
+];
+
 const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLImageElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subheadlineRef = useRef<HTMLParagraphElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  
+  const [selectedRoute, setSelectedRoute] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [travelers, setTravelers] = useState('2');
+
+  // YouTube video ID from the URL
+  const videoId = 'BYZrgnQkBdk';
 
   // Auto-play entrance animation on load
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-
-      // Background entrance
-      tl.fromTo(
-        bgRef.current,
-        { scale: 1.08, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.2 },
-        0
-      );
 
       // Headline entrance with split text effect
       if (headlineRef.current) {
@@ -60,7 +83,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
     return () => ctx.revert();
   }, []);
 
-  // Scroll-driven exit animation
+  // Scroll-driven exit animation with video pause/resume
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -77,7 +100,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
             // Reset elements when scrolling back to top
             gsap.set([headlineRef.current, subheadlineRef.current], { x: 0, opacity: 1 });
             gsap.set(cardRef.current, { x: 0, opacity: 1 });
-            gsap.set(bgRef.current, { scale: 1, y: 0 });
+            gsap.set(videoContainerRef.current, { scale: 1, y: 0 });
+            // Resume video when scrolling back to top
+            postMessageToPlayer('playVideo');
+          },
+          onLeave: () => {
+            // Pause video when leaving the section
+            postMessageToPlayer('pauseVideo');
+          },
+          onEnter: () => {
+            // Play video when entering the section
+            postMessageToPlayer('playVideo');
+          },
+          onEnterBack: () => {
+            // Resume video when scrolling back into view
+            postMessageToPlayer('playVideo');
           },
         },
       });
@@ -104,7 +141,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
 
       // Background parallax on exit
       scrollTl.fromTo(
-        bgRef.current,
+        videoContainerRef.current,
         { scale: 1, y: 0 },
         { scale: 1.06, y: '-4vh', ease: 'none' },
         0.7
@@ -114,21 +151,56 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
     return () => ctx.revert();
   }, []);
 
+  // Helper function to post messages to YouTube iframe
+  const postMessageToPlayer = (command: string) => {
+    const iframe = iframeRef.current;
+    if (iframe && iframe.contentWindow) {
+      iframe.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: command, args: [] }),
+        '*'
+      );
+    }
+  };
+
+  // Handle search
+  const handleSearch = () => {
+    console.log('Search:', { selectedRoute, startDate, endDate, travelers });
+    // Implement search logic here
+  };
+
   return (
     <section
       ref={sectionRef}
       className={`section-pinned ${className}`}
     >
-      {/* Background Image */}
-      <img
-        ref={bgRef}
-        src="/everest_hero.jpg"
-        alt="Mount Everest"
-        className="bg-image"
-      />
+      {/* YouTube Video Background */}
+      <div
+        ref={videoContainerRef}
+        className="absolute inset-0 w-full h-full overflow-hidden"
+      >
+        <div className="absolute inset-0 w-full h-full">
+          <iframe
+            ref={iframeRef}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&enablejsapi=1&version=3&playerapiid=ytplayer`}
+            title="YouTube video background"
+            className="absolute w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{ pointerEvents: 'none' }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      </div>
+
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40 z-[1]" />
 
       {/* Vignette overlay */}
-      <div className="vignette-overlay" />
+      <div 
+        className="absolute inset-0 z-[2]"
+        style={{
+          background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)'
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-between px-[6vw] py-[10vh]">
@@ -150,22 +222,107 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
           </p>
         </div>
 
-        {/* CTA Card */}
+        {/* Checkout Form Card */}
         <div className="flex justify-end">
           <div
             ref={cardRef}
-            className="glass-card rounded-xl p-6 lg:p-8 max-w-[520px] w-[34vw] min-w-[300px]"
+            className="glass-card rounded-2xl p-6 lg:p-8 max-w-[520px] w-[38vw] min-w-[340px] backdrop-blur-xl bg-white/10 border border-white/20"
           >
-            <h3 className="font-heading text-2xl lg:text-3xl font-semibold text-white mb-3">
-              Plan your trek
+            <h3 className="font-heading text-xl lg:text-2xl font-semibold text-white mb-2 uppercase tracking-wide">
+              Plan Your Trek
             </h3>
-            <p className="font-body text-sm lg:text-base text-white/70 mb-6">
+            <p className="font-body text-sm text-white/70 mb-6">
               Routes for every season. Local guides. Small groups.
             </p>
-            <button className="flex items-center gap-2 px-6 py-3 bg-accent text-white font-accent text-sm tracking-wider rounded-lg btn-hover group">
-              Explore routes
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
+
+            {/* Checkout Form */}
+            <div className="space-y-4">
+              {/* Route Selection */}
+              <div className="space-y-1.5">
+                <Label className="text-white/80 text-xs uppercase tracking-wider flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5" />
+                  Select Route
+                </Label>
+                <Select value={selectedRoute} onValueChange={setSelectedRoute}>
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:ring-white/30 h-11">
+                    <SelectValue placeholder="Choose your trek route" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-900/95 border-white/20 backdrop-blur-xl">
+                    {trekRoutes.map((route) => (
+                      <SelectItem 
+                        key={route.value} 
+                        value={route.value}
+                        className="text-white hover:bg-white/10 focus:bg-white/10 focus:text-white"
+                      >
+                        {route.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Date Selection Row */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1.5">
+                  <Label className="text-white/80 text-xs uppercase tracking-wider flex items-center gap-2">
+                    <Calendar className="w-3.5 h-3.5" />
+                    Start Date
+                  </Label>
+                  <Input
+                    type="date"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:ring-white/30 h-11 [color-scheme:dark]"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-white/80 text-xs uppercase tracking-wider flex items-center gap-2">
+                    <Calendar className="w-3.5 h-3.5" />
+                    End Date
+                  </Label>
+                  <Input
+                    type="date"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:ring-white/30 h-11 [color-scheme:dark]"
+                  />
+                </div>
+              </div>
+
+              {/* Travelers Selection */}
+              <div className="space-y-1.5">
+                <Label className="text-white/80 text-xs uppercase tracking-wider flex items-center gap-2">
+                  <Users className="w-3.5 h-3.5" />
+                  Travelers
+                </Label>
+                <Select value={travelers} onValueChange={setTravelers}>
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white focus:ring-white/30 h-11">
+                    <SelectValue placeholder="Number of travelers" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-900/95 border-white/20 backdrop-blur-xl">
+                    {[1, 2, 3, 4, 5, 6, 7, 8, '9+'].map((num) => (
+                      <SelectItem 
+                        key={num} 
+                        value={String(num)}
+                        className="text-white hover:bg-white/10 focus:bg-white/10 focus:text-white"
+                      >
+                        {num} {num === 1 ? 'Traveler' : 'Travelers'}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Search Button */}
+              <Button
+                onClick={handleSearch}
+                className="w-full h-12 bg-accent hover:bg-accent/90 text-white font-accent text-sm tracking-wider rounded-lg transition-all duration-300 group flex items-center justify-center gap-2 mt-2"
+              >
+                <Search className="w-4 h-4" />
+                Search Treks
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>

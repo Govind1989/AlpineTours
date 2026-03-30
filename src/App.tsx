@@ -114,6 +114,7 @@ function App() {
       <main className="relative">
         <HeroSection className="z-10" />
         <AnnapurnaSection className="z-20" />
+        {/* <KhumbuSection className="z-25" /> */}
         <MustangSection className="z-30" />
         <CulturalSection className="z-40" />
         <WinterSection className="z-50" />

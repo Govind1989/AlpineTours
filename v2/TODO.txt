@@ -3,4 +3,19 @@ Add multiple destination cards in second.
 Creative bike tour in third
 Culture -> why book with alpine
 Guided supported safe -> Our Partners + Experts
-Footer + customize link 
+Footer + customize Heli rescue with silhoutte of helicopter in himalayan ranges
+
+
+
+
+Extract contents from this website, https://alpinetreknepal.com/  we are upgrading this website
+
+
+NOw here the extract the current color theme and layout, here in this compoenent we have everest_hero.jpg with parallax and all. now instead of image, i want to place a youtube video link "www.youtube.com\/watch?v=BYZrgnQkBdk" playing on the background. when the video is extended or scrolled i want the video to pause and continue if again snapped back to the frame from paused frame and continuosly played when snapped back to the frame. Also redesign with the card 
+Plan your trek
+Routes for every season. Local guides. Small groups.
+
+with a checkout like form that allows our dynamic routes and date and a search botton to search. Along
+ Do this in the HeroSection.tsx.
+
+Yes now in the AnnapurnaSection.tsx i want you to redesign our card section with a carousel as shown in the image given as in the native website. the current Info card must be redesign to place a portrait image and curret information about all the himalyan trails and current bottom is great. Place the carousel at the x-axis center of the frame with carousel autorunning. The carousel must be minimalistic and premium. i have a codepen link, you can integrate this carousel in our Annapurna Section , https://codepen.io/editor/Akinbobola-Trust-Ifemayowa/pen/019d2f75-e6ff-734e-9942-1fdecc1c0754  . Impress me with this two components changes exactly as requested.
