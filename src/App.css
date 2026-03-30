@@ -1,0 +1,134 @@
+/* App-specific styles */
+
+/* Ensure smooth scroll behavior */
+html {
+  scroll-behavior: auto;
+}
+
+/* Section transitions */
+.section-pinned {
+  will-change: transform, opacity;
+}
+
+/* Background image optimization */
+.bg-image {
+  object-position: center;
+  will-change: transform, scale;
+}
+
+/* Glass card enhancements */
+.glass-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Button enhancements */
+.btn-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-hover:hover::before {
+  left: 100%;
+}
+
+/* Navigation link underline animation */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #FF4D2E;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Scene bar progress animation */
+.progress-line {
+  transition: transform 0.1s linear;
+}
+
+/* Altitude counter animation */
+.altitude-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Form input focus states */
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 2px rgba(255, 77, 46, 0.2);
+}
+
+/* Custom select arrow */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+  .section-pinned {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  
+  .glass-card {
+    width: 90vw !important;
+    max-width: none;
+    min-width: auto;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .section-pinned,
+  .bg-image,
+  .glass-card,
+  .btn-hover {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .nav-fixed,
+  .scene-bar,
+  .altitude-counter,
+  .grain-overlay {
+    display: none !important;
+  }
+}

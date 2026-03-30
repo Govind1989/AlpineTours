@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 5%;
+    --foreground: 0 0% 100%;
+    --card: 220 25% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 25% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 11 100% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 70%;
+    --accent: 11 100% 59%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 11 100% 59%;
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
+  body {
+    @apply bg-[#0B0F17] text-white antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+/* Typography */
+.font-heading {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-accent {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Vignette overlay */
+.vignette-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 60% 40%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+}
+
+/* Section base styles */
+.section-pinned {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Background image styles */
+.bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Card glass effect */
+.glass-card {
+  background: rgba(11, 15, 23, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Accent color */
+.text-accent {
+  color: #FF4D2E;
+}
+
+.bg-accent {
+  background-color: #FF4D2E;
+}
+
+/* Button hover effect */
+.btn-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Scene bar */
+.scene-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, rgba(11, 15, 23, 0.9), transparent);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6vw;
+}
+
+/* Progress line */
+.progress-line {
+  height: 2px;
+  background: #FF4D2E;
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* Navigation */
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 6vw;
+  background: linear-gradient(to bottom, rgba(11, 15, 23, 0.8), transparent);
+  backdrop-filter: blur(8px);
+}
+
+/* Altitude counter */
+.altitude-counter {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  z-index: 100;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Floating map hub */
+.map-hub {
+  position: fixed;
+  bottom: 80px;
+  right: 2rem;
+  width: 80px;
+  height: 80px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+/* Trail marker */
+.trail-marker {
+  position: fixed;
+  right: 1rem;
+  top: 20%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stone {
+  width: 12px;
+  height: 8px;
+  background: linear-gradient(135deg, #8B7355, #5C4A3A);
+  border-radius: 2px;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.stone.active {
+  opacity: 1;
+}
+
+/* Headline animation */
+.headline-reveal {
+  overflow: hidden;
+}
+
+.headline-reveal span {
+  display: inline-block;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 77, 46, 0.3);
+  color: white;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
