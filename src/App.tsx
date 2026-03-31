@@ -11,6 +11,7 @@ import AnnapurnaSection from './sections/AnnapurnaSection';
 import MustangSection from './sections/MustangSection';
 // import CulturalSection from './sections/CulturalSection';
 import WinterSection from './sections/WinterSection';
+// import WhyChooseSection from './sections/WhyChooseSection';
 // import GroupSection from './sections/GroupSection';
 import RescueSection from './sections/RescueSection';
 import TestimonialSection from './sections/TestimonialSection';
@@ -120,6 +121,7 @@ function App() {
         <MustangSection className="z-30" />
         {/* <CulturalSection className="z-40" /> */}
         <WinterSection className="z-50" />
+        {/* <WhyChooseSection className="z-50" /> */}
         {/* <GroupSection className="z-[60]" /> */}
         <RescueSection className="z-[60]" />
         <TestimonialSection className="z-[70]" />
