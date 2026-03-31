@@ -136,7 +136,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
         <div className="max-w-[46vw]">
           <h1
             ref={headlineRef}
-            className="font-heading text-[clamp(36px,5vw,72px)] font-bold text-white leading-[0.95] tracking-[-0.02em]"
+            className="font-heading text-[clamp(36px,5vw,80px)] font-bold text-white leading-[0.9] tracking-[-0.03em]"
           >
             <span className="word inline-block">Beyond</span>{' '}
             <span className="word inline-block">the</span>{' '}
@@ -144,7 +144,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
           </h1>
           <p
             ref={subheadlineRef}
-            className="mt-6 font-body text-lg lg:text-xl text-white/80 max-w-md"
+            className="mt-6 font-body text-lg lg:text-xl text-white/80 max-w-md leading-relaxed"
           >
             Guided treks across Nepal's highest landscapes.
           </p>
@@ -156,18 +156,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
             ref={cardRef}
             className="glass-card rounded-xl p-6 lg:p-8 max-w-[520px] w-[34vw] min-w-[300px]"
           >
-            <h3 className="font-heading text-2xl lg:text-3xl font-semibold text-white mb-3 uppercase">
+            <span className="font-accent text-xs text-accent tracking-[0.2em] uppercase mb-4 block">
+              Everest Region
+            </span>
+            <h3 className="font-heading text-xl lg:text-2xl font-bold text-white mb-4 uppercase tracking-wide">
               WELCOME TO NEPAL
             </h3>
-            <p className="font-body text-sm lg:text-base text-white/70 mb-6">
+            <p className="font-body text-base lg:text-lg text-white/70 mb-8 leading-relaxed">
               Treks, bike tours, cultural journeys, and adventures await you.
             </p>
             <div className='flex flex-row gap-4'>
-            <button className="flex items-center gap-2 px-6 py-3 bg-accent text-white font-accent text-sm tracking-wider rounded-lg btn-hover group">
-              Explore routes
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
-              <button className="flex items-center gap-2 px-6 py-3 bg-white text-accent font-accent text-sm tracking-wider rounded-lg btn-hover group">
+              <button className="flex items-center gap-2 px-6 py-3 bg-accent text-white font-accent text-sm font-bold tracking-widest uppercase rounded-lg btn-hover group transition-all duration-300">
+                Explore routes
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
+              <button className="flex items-center gap-2 px-6 py-3 bg-white text-accent font-accent text-sm font-bold tracking-widest uppercase rounded-lg btn-hover group transition-all duration-300">
                 Customize Tours
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>

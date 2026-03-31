@@ -108,10 +108,10 @@ const GroupSection: React.FC<GroupSectionProps> = ({ className = '' }) => {
       <div className="relative z-10 h-full flex flex-col justify-between px-[6vw] py-[10vh]">
         {/* Headline Block */}
         <div ref={headlineRef} className="max-w-[46vw]">
-          <h2 className="font-heading text-[clamp(32px,4.5vw,64px)] font-bold text-white leading-[0.95] tracking-[-0.02em]">
+          <h2 className="font-heading text-[clamp(36px,5vw,80px)] font-bold text-white leading-[0.9] tracking-[-0.03em]">
             Guided. Supported. Safe.
           </h2>
-          <p className="mt-6 font-body text-lg lg:text-xl text-white/80 max-w-md">
+          <p className="mt-6 font-body text-lg lg:text-xl text-white/80 max-w-md leading-relaxed">
             Experienced local leads, clear plans, and backup when you need it.
           </p>
         </div>
@@ -122,13 +122,16 @@ const GroupSection: React.FC<GroupSectionProps> = ({ className = '' }) => {
             ref={cardRef}
             className="glass-card rounded-xl p-6 lg:p-8 max-w-[520px] w-[34vw] min-w-[300px]"
           >
-            <h3 className="font-heading text-2xl lg:text-3xl font-semibold text-white mb-3">
+            <span className="font-accent text-xs text-accent tracking-[0.2em] uppercase mb-4 block">
+              Join the Team
+            </span>
+            <h3 className="font-heading text-xl lg:text-2xl font-bold text-white mb-4 uppercase tracking-wide">
               Group treks
             </h3>
-            <p className="font-body text-sm lg:text-base text-white/70 mb-6">
+            <p className="font-body text-base lg:text-lg text-white/70 mb-8 leading-relaxed">
               Fixed departures and private groups. All logistics handled—you walk.
             </p>
-            <button className="flex items-center gap-2 px-6 py-3 bg-accent text-white font-accent text-sm tracking-wider rounded-lg btn-hover group">
+            <button className="flex items-center gap-2 px-6 py-3 bg-accent text-white font-accent text-sm font-bold tracking-widest uppercase rounded-lg btn-hover group transition-all duration-300">
               See upcoming dates
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>

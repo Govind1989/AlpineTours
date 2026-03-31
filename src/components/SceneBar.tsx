@@ -14,11 +14,11 @@ const scenes: SceneInfo[] = [
   { location: 'Trek and Bike Tour', coordinates: 'Adventure awaits you' },
   {
     location: 'Beyound Normal Trails', coordinates: 'Guided treks across Nepal highest landscapes.' },
-  { location: 'Upper Mustang', coordinates: '29.0469° N, 83.8748° E' },
+  { location: 'Untouched Remote Trails', coordinates: '29.0469° N, 83.8748° E' },
   { location: 'Kathmandu Valley', coordinates: '27.7172° N, 85.3240° E' },
   { location: 'Langtang Region', coordinates: '28.2154° N, 85.5433° E' },
   { location: 'Everest View Trail', coordinates: '27.8100° N, 86.7200° E' },
-  { location: 'Three Passes Loop', coordinates: '27.9500° N, 86.8000° E' },
+  { location: 'Around the World ', coordinates: '27.9500° N, 86.8000° E' },
   { location: 'Gokyo Lakes', coordinates: '27.9500° N, 86.7000° E' },
   { location: 'Kathmandu Office', coordinates: '27.7172° N, 85.3240° E' },
 ];

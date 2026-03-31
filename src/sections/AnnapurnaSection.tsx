@@ -218,10 +218,10 @@ const AnnapurnaSection: React.FC<AnnapurnaSectionProps> = ({ className = '' }) =
       <div className="relative z-10 h-full flex flex-col justify-between px-[6vw] py-[10vh]">
         {/* Headline Block */}
         <div ref={headlineRef} className="max-w-[46vw]">
-          <h2 className="font-heading text-[clamp(32px,4.5vw,64px)] font-bold text-white leading-[0.95] tracking-[-0.02em]">
+          <h2 className="font-heading text-[clamp(36px,5vw,80px)] font-bold text-white leading-[0.9] tracking-[-0.03em]">
             Walk the Great Ridges
           </h2>
-          <p className="mt-6 font-body text-lg lg:text-xl text-white/80 max-w-md">
+          <p className="mt-6 font-body text-lg lg:text-xl text-white/80 max-w-md leading-relaxed">
             From tea-house trails to high passes.
           </p>
         </div>
@@ -232,7 +232,10 @@ const AnnapurnaSection: React.FC<AnnapurnaSectionProps> = ({ className = '' }) =
           className="w-full flex flex-col items-center"
         >
           {/* Section Title */}
-          <h3 className="font-heading text-2xl lg:text-3xl font-semibold text-white mb-8 text-center">
+          <span className="font-accent text-xs text-accent tracking-[0.2em] uppercase mb-4 block">
+            The Trekking Experience
+          </span>
+          <h3 className="font-heading text-xl lg:text-2xl font-bold text-white mb-8 uppercase tracking-wide">
             Top Destinations
           </h3>
 
@@ -285,22 +288,22 @@ const AnnapurnaSection: React.FC<AnnapurnaSectionProps> = ({ className = '' }) =
                         {/* Content */}
                         <div className="absolute inset-0 p-5 flex flex-col justify-end">
                           {/* Trail Name */}
-                          <h4 className="font-heading text-xl font-semibold text-white mb-2">
+                          <h4 className="font-heading text-xl lg:text-2xl font-bold text-white mb-4 uppercase tracking-wide">
                             {trail.name}
                           </h4>
 
                           {/* Description */}
-                          <p className="font-body text-sm text-white/70 mb-4 line-clamp-2">
+                          <p className="font-body text-sm text-white/70 mb-4 line-clamp-2 leading-relaxed">
                             {trail.description}
                           </p>
 
                           {/* Stats */}
                           <div className="flex items-center gap-4 text-white/60 text-xs mb-4">
-                            <span className="flex items-center gap-1">
+                            <span className="flex items-center gap-1 font-accent tracking-wider uppercase">
                               <Clock className="w-3.5 h-3.5" />
                               {trail.duration}
                             </span>
-                            <span className="flex items-center gap-1">
+                            <span className="flex items-center gap-1 font-accent tracking-wider uppercase">
                               <Mountain className="w-3.5 h-3.5" />
                               {trail.maxAltitude}
                             </span>
@@ -309,7 +312,7 @@ const AnnapurnaSection: React.FC<AnnapurnaSectionProps> = ({ className = '' }) =
                           {/* CTA Button */}
                           <Button
                             variant="ghost"
-                            className="w-full bg-white/10 hover:bg-white/20 text-white text-sm font-accent tracking-wider rounded-lg backdrop-blur-sm transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0"
+                            className="w-full bg-white/10 hover:bg-white/20 text-white font-accent text-sm font-bold tracking-widest uppercase rounded-lg backdrop-blur-sm transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0"
                           >
                             Explore Route
                             <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />

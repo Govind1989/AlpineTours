@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Shield, Phone, Radio, Plane, AlertTriangle } from 'lucide-react';
+import {  Phone, Radio, Plane, AlertTriangle, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +13,7 @@ const RescueSection: React.FC<RescueSectionProps> = ({ className = '' }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLImageElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -28,12 +28,11 @@ const RescueSection: React.FC<RescueSectionProps> = ({ className = '' }) => {
           start: 'top top',
           end: '+=150%',
           pin: true,
-          scrub: 1, // Smoother scrub for flying feel
+          scrub: 1, 
         }
       });
 
-      // Background flight illusion: 
-      // Moves from slightly zoomed in and offset to centered/normal
+      // Background flight illusion
       tl.fromTo(
         bgRef.current,
         { scale: 1.3, xPercent: -5, yPercent: 5 },
@@ -43,9 +42,9 @@ const RescueSection: React.FC<RescueSectionProps> = ({ className = '' }) => {
 
       // Entrance of text content
       tl.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, ease: 'power2.out' },
+        headlineRef.current,
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, ease: 'power2.out' },
         0.1
       );
 
@@ -59,7 +58,7 @@ const RescueSection: React.FC<RescueSectionProps> = ({ className = '' }) => {
       // Exit animations
       tl.to(
         contentRef.current,
-        { opacity: 0, scale: 0.95, y: -20, ease: 'power2.in' },
+        { opacity: 0, x: -20, ease: 'power2.in' },
         0.85
       );
       
@@ -78,7 +77,7 @@ const RescueSection: React.FC<RescueSectionProps> = ({ className = '' }) => {
     <section
       ref={sectionRef}
       id="rescue"
-      className={`section-pinned relative overflow-hidden flex items-center justify-center ${className}`}
+      className={`section-pinned relative overflow-hidden ${className}`}
     >
       {/* Dynamic Background Image - Flying Illusion */}
       <img
@@ -98,55 +97,57 @@ const RescueSection: React.FC<RescueSectionProps> = ({ className = '' }) => {
       />
 
       {/* Content Layer */}
-      <div ref={contentRef} className="relative z-10 w-full max-w-7xl px-6 lg:px-12 text-center text-white">
-        <div className="flex flex-col items-center">
+      <div ref={contentRef} className="relative z-10 h-full flex flex-col justify-between px-[6vw] py-[10vh] text-white">
+        {/* Headline Block */}
+        <div ref={headlineRef} className="max-w-[46vw]">
           {/* Badge */}
-          <div className="flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-xs uppercase tracking-[0.2em] font-accent">
-            <Shield className="w-3.5 h-3.5 text-accent" />
+          <span className="font-accent text-xs text-accent tracking-[0.2em] uppercase mb-6 block">
             Guardian Skies Readiness
-          </div>
+          </span>
 
           {/* Headline */}
           <h2 
-            ref={titleRef}
-            className="font-heading text-[clamp(40px,6vw,96px)] font-bold leading-[0.9] tracking-[-0.03em] mb-8"
+            className="font-heading text-[clamp(36px,5vw,80px)] font-bold text-white leading-[0.9] tracking-[-0.03em] mb-8"
           >
             Safety Without <br />
             <span className="text-accent italic">Compromise</span>
           </h2>
 
           {/* Description */}
-          <div className="max-w-2xl mx-auto space-y-6">
-            <p className="font-body text-lg lg:text-xl text-white/80 leading-relaxed">
+          <div className="space-y-6">
+            <p className="font-body text-lg lg:text-xl text-white/80 max-w-md leading-relaxed">
               In the heart of the world's most unforgiving terrain, we believe your ambition should never outpace your security. 
-              Our 24/7 high-altitude rescue infrastructure is not a feature—it is our foundation.
             </p>
-            <p className="font-body text-base lg:text-lg text-white/60">
-              With real-time satellite tracking and a dedicated fleet of mountain-rated Eurocopters, 
-              we bring an ironclad safety net to every ridge and valley of your journey.
+            <p className="font-body text-base lg:text-lg text-white/70 max-w-md leading-relaxed">
+              Our 24/7 high-altitude rescue infrastructure is not a feature—it is our foundation. With real-time satellite tracking and mountain-rated Eurocopters, we bring an ironclad safety net to every ridge.
             </p>
           </div>
 
-          {/* Safety Stats/Features Grid */}
-          <div 
-            ref={statsRef}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 w-full"
-          >
-            {[
-              { icon: Radio, title: "Satellite Comms", text: "Global Coverage" },
-              { icon: Phone, title: "24/7 Dispatch", text: "Instant Response" },
-              { icon: Plane, title: "Elite Pilots", text: "Himalayan Vets" },
-              { icon: AlertTriangle, title: "Rescue Fleet", text: "Airbus H125" }
-            ].map((stat, i) => (
-              <div key={i} className="flex flex-col items-center group">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-accent/20 group-hover:border-accent/40 group-hover:-translate-y-2">
-                  <stat.icon className="w-8 h-8 text-accent" />
-                </div>
-                <h4 className="font-heading text-lg font-semibold mb-1">{stat.title}</h4>
-                <p className="font-body text-sm text-white/40">{stat.text}</p>
+          <button className="mt-10 flex items-center gap-3 px-8 py-4 bg-accent text-white font-accent text-sm font-bold tracking-widest rounded-xl transition-all hover:brightness-110 active:scale-95 group">
+            EMERGENCY PROTOCOLS
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+
+        {/* Safety Stats/Features Grid */}
+        <div 
+          ref={statsRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-5xl"
+        >
+          {[
+            { icon: Radio, title: "Satellite Comms", text: "Global Coverage" },
+            { icon: Phone, title: "24/7 Dispatch", text: "Instant Response" },
+            { icon: Plane, title: "Elite Pilots", text: "Himalayan Vets" },
+            { icon: AlertTriangle, title: "Rescue Fleet", text: "Airbus H125" }
+          ].map((stat, i) => (
+            <div key={i} className="flex flex-col items-start group">
+              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-accent/20 group-hover:border-accent/40 group-hover:-translate-y-2">
+                <stat.icon className="w-7 h-7 text-accent" />
               </div>
-            ))}
-          </div>
+              <h4 className="font-heading text-xl font-bold text-white mb-2 uppercase tracking-wide">{stat.title}</h4>
+              <p className="font-body text-sm text-white/70 leading-relaxed">{stat.text}</p>
+            </div>
+          ))}
         </div>
       </div>
 

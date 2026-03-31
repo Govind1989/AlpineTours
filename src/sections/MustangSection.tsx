@@ -134,10 +134,9 @@ const MustangSection: React.FC<MustangSectionProps> = ({ className = '' }) => {
         {/* Top Section: Headline + Bike Rotation */}
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
           <div ref={headlineRef} className="max-w-[46vw]">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-[1px] w-12 bg-accent" />
-              <span className="font-accent text-accent tracking-[0.2em] text-sm uppercase">Off-Road Excellence</span>
-            </div>
+            <span className="font-accent text-xs text-accent tracking-[0.2em] uppercase mb-4 block">
+              Off-Road Excellence
+            </span>
             <h2 className="font-heading text-[clamp(36px,5vw,80px)] font-bold text-white leading-[0.9] tracking-[-0.03em]">
               Conquer the <br />
               <span className="text-accent">High Desert</span>
@@ -147,10 +146,10 @@ const MustangSection: React.FC<MustangSectionProps> = ({ className = '' }) => {
             </p>
             
             <div className="mt-10 space-y-4 border-l-2 border-accent/30 pl-6">
-              <p className="font-heading text-xl text-white font-medium">
+              <h3 className="font-heading text-xl lg:text-2xl font-bold text-white mb-4 uppercase tracking-wide">
                 Best in class for offroading.
-              </p>
-              <p className="font-body text-base text-white/60 max-w-sm">
+              </h3>
+              <p className="font-body text-base lg:text-lg text-white/70 mb-8 leading-relaxed max-w-sm">
                 Our machines are engineered to conquer the most challenging Himalayan terrains with unmatched power and precision.
               </p>
             </div>
@@ -163,11 +162,11 @@ const MustangSection: React.FC<MustangSectionProps> = ({ className = '' }) => {
                 
 
                 <div className="flex flex-row gap-4">
-                  <button className="flex items-center gap-3 px-8 py-4 bg-accent text-white font-accent text-sm font-bold tracking-widest rounded-xl transition-all hover:brightness-110 active:scale-95 group">
+                  <button className="flex items-center gap-3 px-8 py-4 bg-accent text-white font-accent text-sm font-bold tracking-widest uppercase rounded-xl transition-all hover:brightness-110 active:scale-95 group">
                     VIEW ITINERARIES
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </button>
-                  <button className="flex items-center gap-3 px-8 py-4 bg-white/10 text-white font-accent text-sm font-bold tracking-widest rounded-xl transition-all hover:bg-white/20 border border-white/10">
+                  <button className="flex items-center gap-3 px-8 py-4 bg-white/10 text-white font-accent text-sm font-bold tracking-widest uppercase rounded-xl transition-all hover:bg-white/20 border border-white/10">
                     <Bike className="w-4 h-4" />
                     BIKE SPECS
                   </button>
